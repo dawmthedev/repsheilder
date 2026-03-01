@@ -60,7 +60,21 @@ function getParam(searchParams: URLSearchParams, key: string) {
   return searchParams.get(key) ?? ''
 }
 
-function pickTracking(searchParams: URLSearchParams) {
+function pickTracking(searchParams: URLSearchParams | null) {
+  if (!searchParams) {
+    return {
+      utm_source: '',
+      utm_medium: '',
+      utm_campaign: '',
+      utm_term: '',
+      utm_content: '',
+      gclid: '',
+      wbraid: '',
+      gbraid: '',
+      fbclid: '',
+      msclkid: '',
+    }
+  }
   return {
     utm_source: getParam(searchParams, 'utm_source'),
     utm_medium: getParam(searchParams, 'utm_medium'),
@@ -84,13 +98,13 @@ export function QuoteFunnel({
   const searchParams = useSearchParams()
 
   const platform = useMemo(() => {
-    const p = searchParams.get('p')
+    const p = searchParams?.get('p')
     if (p && isPlatform(p)) return p
     return defaultPlatform
   }, [defaultPlatform, searchParams])
 
   const step = useMemo<Step>(() => {
-    const s = searchParams.get('step')
+    const s = searchParams?.get('step') ?? null
     if (isStep(s)) return s
     return 'Contact'
   }, [searchParams])
@@ -137,7 +151,7 @@ export function QuoteFunnel({
   const logo = PLATFORM_LOGOS[platform]?.logoSrc
 
   const updateStep = (next: Step) => {
-    const params = new URLSearchParams(searchParams.toString())
+    const params = new URLSearchParams(searchParams?.toString() ?? '')
     params.set('p', platform)
     params.set('step', next)
     router.push(`/quote?${params.toString()}`)
@@ -205,7 +219,7 @@ export function QuoteFunnel({
         setError('Something went wrong. Please try again.')
         return
       }
-      const params = new URLSearchParams(searchParams.toString())
+      const params = new URLSearchParams(searchParams?.toString() ?? '')
       params.set('p', platform)
       params.set('step', 'Business')
       router.push(`/review-removal/${platform}?${params.toString()}`)

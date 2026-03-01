@@ -22,23 +22,11 @@ export default function ReviewRemovalHubPage() {
 
         <div className="mt-10 rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
           <div className="text-lg font-semibold text-slate-950">Choose a platform</div>
-          <div className="mt-4 grid gap-4 md:gap-5">
-            <div className="flex justify-center">
-              <div className="w-full max-w-[220px]">
-                <PlatformCard href="/quote?p=google" logoSrc={PLATFORM_LOGOS.google.logoSrc} label="Google Business" />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 md:gap-5">
-              <PlatformCard href="/quote?p=airbnb" logoSrc={PLATFORM_LOGOS.airbnb.logoSrc} label="Airbnb" />
-              <PlatformCard href="/quote?p=facebook" logoSrc={PLATFORM_LOGOS.facebook.logoSrc} label="Facebook" />
-              <PlatformCard href="/quote?p=trustpilot" logoSrc={PLATFORM_LOGOS.trustpilot.logoSrc} label="Trustpilot" />
-              <div className="relative">
-                <PlatformCard href="/quote?p=trustpilot" logoSrc={PLATFORM_LOGOS.trustpilot.logoSrc} label="Trustpilot" />
-                <div className="absolute -top-2 -right-2 rounded-full bg-green-500 px-2 py-1 text-xs font-semibold text-white">
-                  60%
-                </div>
-              </div>
-            </div>
+          <div className="mt-4 grid grid-cols-2 gap-4 md:gap-5">
+            <PlatformCard href="/quote?p=google" logoSrc={PLATFORM_LOGOS.google.logoSrc} label="Google Business" />
+            <PlatformCard href="/quote?p=airbnb" logoSrc={PLATFORM_LOGOS.airbnb.logoSrc} label="Airbnb" />
+            <PlatformCard href="/quote?p=facebook" logoSrc={PLATFORM_LOGOS.facebook.logoSrc} label="Facebook" />
+            <PlatformCard href="/quote?p=trustpilot" logoSrc={PLATFORM_LOGOS.trustpilot.logoSrc} label="Trustpilot" />
           </div>
 
           <div className="mt-6 flex justify-center">

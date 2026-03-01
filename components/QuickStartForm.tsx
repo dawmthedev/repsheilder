@@ -27,7 +27,7 @@ export function QuickStartForm({ className }: { className?: string }) {
 
     const params = new URLSearchParams()
     for (const key of keys) {
-      const value = searchParams.get(key)
+      const value = searchParams?.get(key)
       if (value) params.set(key, value)
     }
     return params

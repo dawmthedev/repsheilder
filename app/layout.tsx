@@ -2,9 +2,12 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
+import { Suspense } from 'react'
 
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
+import { GA_MEASUREMENT_ID, GoogleAnalyticsPageView } from '@/components/GoogleAnalytics'
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -81,6 +84,17 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
       </head>
       <body className={`${inter.className} min-h-screen bg-white antialiased`}>
         <SiteHeader />
@@ -88,6 +102,9 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <Suspense fallback={null}>
+          <GoogleAnalyticsPageView />
+        </Suspense>
       </body>
     </html>
   )

@@ -10,7 +10,7 @@ export function IntakeForm({ platform }: { platform: Platform }) {
   const searchParams = useSearchParams()
 
   const utm = useMemo(() => {
-    const get = (key: string) => searchParams.get(key) ?? ''
+    const get = (key: string) => searchParams?.get(key) ?? ''
     return {
       utm_source: get('utm_source'),
       utm_medium: get('utm_medium'),

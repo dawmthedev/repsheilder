@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { IntakeForm } from '@/components/IntakeForm'
+import { GuaranteeCard } from '@/components/GuaranteeCard'
+import { LeadSubmissionTracker } from '@/components/LeadSubmissionTracker'
 import { isPlatform, platformKeywords, platformLabel, type Platform } from '@/lib/platform'
+import { PLATFORM_LOGOS } from '@/lib/platformLogos'
 
 export const revalidate = 86400
 
@@ -124,6 +129,7 @@ export default function PlatformPage({
   const platform = params.platform
   const { label, keywords, intro } = getPageCopy(platform)
   const submitted = searchParams.submitted === '1' || searchParams.submitted === 'true'
+  const logoSrc = PLATFORM_LOGOS[platform]?.logoSrc
 
   return (
     <main className="bg-white">
@@ -137,7 +143,8 @@ export default function PlatformPage({
       />
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="max-w-3xl">
+        {submitted ? <LeadSubmissionTracker platform={platform} /> : null}
+        <div className="mx-auto max-w-2xl">
           {submitted ? (
             <div className="mb-8 rounded-3xl border border-emerald-200 bg-emerald-50 p-6 shadow-sm">
               <div className="flex items-start gap-4">
@@ -235,59 +242,31 @@ export default function PlatformPage({
               </div>
             </div>
           ) : null}
-          <h1 className="text-4xl font-semibold tracking-tight text-slate-950">
-            Remove {label} Reviews & Protect Your Business Reputation
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-3 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold text-slate-700">
+              {logoSrc ? <Image src={logoSrc} alt={label} width={18} height={18} /> : null}
+              <span>{label}</span>
+            </div>
+          </div>
+
+          <h1 className="mt-6 text-center text-4xl font-semibold tracking-tight text-slate-950 md:text-5xl">
+            {label} Review Removal
           </h1>
-          <p className="mt-5 text-base leading-7 text-slate-600">{intro}</p>
+          <p className="mt-4 text-center text-base leading-7 text-slate-600">
+            Confidential, policy-first dispute support for business owners
+          </p>
+          <p className="mt-2 text-center text-sm leading-6 text-slate-600">{intro}</p>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {keywords.map((k) => (
-              <span
-                key={k}
-                className="rounded-full border border-black/5 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700"
-              >
-                {k}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
-            <div className="text-xl font-semibold text-slate-950">Why {label} reviews matter</div>
-            <p className="mt-4 text-sm leading-6 text-slate-600">
-              Reviews influence buyer trust, conversion rates, and platform visibility. When content
-              is false, harassing, or policy-violating, a structured policy-based case can improve
-              the likelihood of enforcement.
-            </p>
-
-            <div className="mt-8 text-xl font-semibold text-slate-950">
-              Our {label} review removal process
-            </div>
-            <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-600">
-              <li>Violation detection and policy mapping</li>
-              <li>Evidence documentation and timeline capture</li>
-              <li>Policy-based reporting and escalation support</li>
-              <li>Appeal guidance where applicable</li>
-            </ul>
-
-            <div className="mt-8 rounded-2xl border border-black/5 bg-slate-50 p-5">
-              <div className="text-sm font-semibold text-slate-900">Trust & compliance</div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">
-                Confidential handling. Policy-first process. No guaranteed outcomes.
-              </div>
-            </div>
-          </div>
-
-          <div id="intake" className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
-            <div className="text-xl font-semibold text-slate-950">Free case evaluation</div>
-            <p className="mt-3 text-sm leading-6 text-slate-600">
-              Submit details for a confidential review. This is general intake information and not
-              legal advice.
-            </p>
+          <div id="intake" className="mt-10 rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
+            <div className="text-sm font-semibold text-slate-900">Free case evaluation</div>
+            <div className="mt-1 text-sm text-slate-600">Submit a short request and we will follow up with next steps.</div>
             <div className="mt-6">
               <IntakeForm platform={platform} />
             </div>
+          </div>
+
+          <div className="mt-8">
+            <GuaranteeCard />
           </div>
         </div>
       </section>
