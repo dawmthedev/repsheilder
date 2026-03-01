@@ -16,6 +16,7 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
 
   const payload = {
     platform,
+    campaignTag: getString(formData, 'campaignTag'),
     firstName: getString(formData, 'firstName'),
     lastName: getString(formData, 'lastName'),
     email: getString(formData, 'email'),

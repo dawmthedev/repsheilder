@@ -1,4 +1,4 @@
-export const PLATFORMS = ['google', 'glassdoor', 'indeed', 'facebook', 'trustpilot'] as const
+export const PLATFORMS = ['google', 'airbnb', 'facebook', 'trustpilot'] as const
 
 export type Platform = (typeof PLATFORMS)[number]
 
@@ -9,11 +9,9 @@ export function isPlatform(value: string): value is Platform {
 export function platformLabel(platform: Platform) {
   switch (platform) {
     case 'google':
-      return 'Google'
-    case 'glassdoor':
-      return 'Glassdoor'
-    case 'indeed':
-      return 'Indeed'
+      return 'Google Business'
+    case 'airbnb':
+      return 'Airbnb'
     case 'facebook':
       return 'Facebook'
     case 'trustpilot':

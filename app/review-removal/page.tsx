@@ -29,10 +29,15 @@ export default function ReviewRemovalHubPage() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:gap-5">
-              <PlatformCard href="/quote?p=glassdoor" logoSrc={PLATFORM_LOGOS.glassdoor.logoSrc} label="Glassdoor" />
-              <PlatformCard href="/quote?p=indeed" logoSrc={PLATFORM_LOGOS.indeed.logoSrc} label="Indeed" />
+              <PlatformCard href="/quote?p=airbnb" logoSrc={PLATFORM_LOGOS.airbnb.logoSrc} label="Airbnb" />
               <PlatformCard href="/quote?p=facebook" logoSrc={PLATFORM_LOGOS.facebook.logoSrc} label="Facebook" />
               <PlatformCard href="/quote?p=trustpilot" logoSrc={PLATFORM_LOGOS.trustpilot.logoSrc} label="Trustpilot" />
+              <div className="relative">
+                <PlatformCard href="/quote?p=trustpilot" logoSrc={PLATFORM_LOGOS.trustpilot.logoSrc} label="Trustpilot" />
+                <div className="absolute -top-2 -right-2 rounded-full bg-green-500 px-2 py-1 text-xs font-semibold text-white">
+                  60%
+                </div>
+              </div>
             </div>
           </div>
 

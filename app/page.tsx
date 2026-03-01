@@ -1,4 +1,5 @@
 import { FAQ } from '@/components/FAQ'
+import { GuaranteeSection } from '@/components/GuaranteeSection'
 import { Hero } from '@/components/Hero'
 import { QuoteLeadForm } from '@/components/QuoteLeadForm'
 import { ProcessSection } from '@/components/ProcessSection'
@@ -35,6 +36,7 @@ export default function HomePage({
         </div>
       </section>
       <TrustBlock />
+      <GuaranteeSection />
       <ProcessSection />
       <FAQ />
     </main>

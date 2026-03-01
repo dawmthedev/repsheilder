@@ -4,8 +4,8 @@ const faqs = [
     a: 'Potentially. Reviews that violate Google policies (spam, harassment, conflicts of interest, etc.) may be eligible for removal after proper reporting and escalation.',
   },
   {
-    q: 'Is Glassdoor review removal legal?',
-    a: 'Policy-based reporting and escalation are generally legal. We focus on compliant pathways and do not advise actions that violate laws or platform terms.',
+    q: 'Can Airbnb reviews be removed?',
+    a: 'Yes, in certain circumstances. Reviews that violate Airbnb policies (fake reviews, discriminatory content, etc.) may be eligible for removal through proper reporting.',
   },
   {
     q: 'How long does review removal take?',

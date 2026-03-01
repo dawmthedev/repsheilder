@@ -9,8 +9,7 @@ export const revalidate = 86400
 export function generateStaticParams() {
   return [
     { platform: 'google' },
-    { platform: 'glassdoor' },
-    { platform: 'indeed' },
+    { platform: 'airbnb' },
     { platform: 'facebook' },
     { platform: 'trustpilot' },
   ]
@@ -54,8 +53,7 @@ function getPageCopy(platform: Platform) {
 
   const highIntentKeywords: Record<Platform, string[]> = {
     google: ['remove google reviews', 'google review removal service', 'delete negative google review'],
-    glassdoor: ['glassdoor review removal', 'remove glassdoor reviews', 'glassdoor reputation'],
-    indeed: ['indeed review removal', 'remove indeed reviews', 'employer review removal'],
+    airbnb: ['airbnb review removal', 'remove airbnb reviews', 'airbnb dispute review'],
     facebook: ['remove facebook reviews', 'facebook review removal', 'delete facebook recommendation'],
     trustpilot: ['trustpilot review removal', 'remove trustpilot reviews', 'trustpilot dispute'],
   }

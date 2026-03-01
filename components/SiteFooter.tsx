@@ -17,14 +17,8 @@ export function SiteFooter() {
               <Link href="/review-removal/google" className="text-slate-600 hover:text-brand-700">
                 Google Review Removal
               </Link>
-              <Link
-                href="/review-removal/glassdoor"
-                className="text-slate-600 hover:text-brand-700"
-              >
-                Glassdoor Reviews Removal
-              </Link>
-              <Link href="/review-removal/indeed" className="text-slate-600 hover:text-brand-700">
-                Indeed Reviews Removal
+              <Link href="/review-removal/airbnb" className="text-slate-600 hover:text-brand-700">
+                Airbnb Reviews Removal
               </Link>
               <Link
                 href="/review-removal/facebook"
