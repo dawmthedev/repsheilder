@@ -11,7 +11,6 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['react', 'react-dom'],
   },
   webpack: (config, { dev, isServer }) => {
