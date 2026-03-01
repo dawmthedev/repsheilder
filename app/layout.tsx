@@ -85,6 +85,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
+        <link rel="icon" href="/favicon.png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
