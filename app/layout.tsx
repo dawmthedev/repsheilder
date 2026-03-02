@@ -98,6 +98,17 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}');`}
         </Script>
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16915751123"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-ads-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16915751123');`}
+        </Script>
       </head>
       <body className={`${inter.className} min-h-screen bg-white antialiased`}>
         <SiteHeader />
