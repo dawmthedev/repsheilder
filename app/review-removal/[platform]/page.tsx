@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { IntakeForm } from '@/components/IntakeForm'
 import { GuaranteeCard } from '@/components/GuaranteeCard'
 import { LeadSubmissionTracker } from '@/components/LeadSubmissionTracker'
+import { GoogleAdsConversionTracker } from '@/components/GoogleAdsConversionTracker'
 import { isPlatform, platformKeywords, platformLabel, type Platform } from '@/lib/platform'
 import { PLATFORM_LOGOS } from '@/lib/platformLogos'
 
@@ -268,6 +269,8 @@ export default function PlatformPage({
           <div className="mt-8">
             <GuaranteeCard />
           </div>
+
+          <GoogleAdsConversionTracker platform={platform} />
         </div>
       </section>
     </main>

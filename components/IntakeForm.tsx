@@ -1,10 +1,10 @@
  'use client'
 
- import { useEffect, useMemo } from 'react'
- import { useSearchParams } from 'next/navigation'
+import { useEffect, useMemo } from 'react'
+import { useSearchParams } from 'next/navigation'
 
- import { submitIntake } from '@/app/actions/submitIntake'
- import type { Platform } from '@/lib/platform'
+import { submitIntake } from '@/app/actions/submitIntake'
+import type { Platform } from '@/lib/platform'
 
 export function IntakeForm({ platform }: { platform: Platform }) {
   const searchParams = useSearchParams()
@@ -17,6 +17,11 @@ export function IntakeForm({ platform }: { platform: Platform }) {
       utm_campaign: get('utm_campaign'),
       utm_term: get('utm_term'),
       utm_content: get('utm_content'),
+      gclid: get('gclid'),
+      wbraid: get('wbraid'),
+      gbraid: get('gbraid'),
+      fbclid: get('fbclid'),
+      msclkid: get('msclkid'),
     }
   }, [searchParams])
 
@@ -31,6 +36,11 @@ export function IntakeForm({ platform }: { platform: Platform }) {
     set('utm_campaign', utm.utm_campaign)
     set('utm_term', utm.utm_term)
     set('utm_content', utm.utm_content)
+    set('gclid', utm.gclid)
+    set('wbraid', utm.wbraid)
+    set('gbraid', utm.gbraid)
+    set('fbclid', utm.fbclid)
+    set('msclkid', utm.msclkid)
   }, [utm])
 
   return (
@@ -105,6 +115,12 @@ export function IntakeForm({ platform }: { platform: Platform }) {
       <input type="hidden" name="utm_campaign" defaultValue="" />
       <input type="hidden" name="utm_term" defaultValue="" />
       <input type="hidden" name="utm_content" defaultValue="" />
+
+      <input type="hidden" name="gclid" defaultValue="" />
+      <input type="hidden" name="wbraid" defaultValue="" />
+      <input type="hidden" name="gbraid" defaultValue="" />
+      <input type="hidden" name="fbclid" defaultValue="" />
+      <input type="hidden" name="msclkid" defaultValue="" />
 
       <button
         type="submit"

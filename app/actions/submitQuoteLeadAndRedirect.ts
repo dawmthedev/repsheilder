@@ -11,6 +11,7 @@ function getString(formData: FormData, key: string) {
 }
 
 export async function submitQuoteLeadAndRedirect(formData: FormData) {
+  const funnel = getString(formData, 'funnel')
   const platformValue = getString(formData, 'platform')
   const platform: Platform = isPlatform(platformValue) ? platformValue : 'google'
 
@@ -41,7 +42,14 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
 
   const result = await submitQuoteLead(payload)
   if (!result?.ok) {
+    if (funnel === 'general') {
+      redirect(`/quote?error=1`)
+    }
     redirect(`/quote?p=${platform}&error=1`)
+  }
+
+  if (funnel === 'general') {
+    redirect(`/thank-you?submitted=1`)
   }
 
   redirect(`/review-removal/${platform}?submitted=1`)

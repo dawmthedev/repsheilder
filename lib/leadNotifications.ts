@@ -19,12 +19,55 @@ export type LeadNotificationInput = {
   source?: string
   phone?: string
   Country?: string
+  reviewType?: string
+  reviewsToRemove?: string
+  postedTimeframe?: string
+  utm_source?: string
+  utm_medium?: string
+  utm_campaign?: string
+  utm_term?: string
+  utm_content?: string
+  gclid?: string
+  wbraid?: string
+  gbraid?: string
+  fbclid?: string
+  msclkid?: string
 }
 
-export async function notifyLead(input: LeadNotificationInput) {
+export type LeadNotificationContext = {
+  referer?: string
+  platform?: string
+}
+
+function normalizeSource(input: { source?: string; platform?: string; referer?: string }) {
+  const explicit = (input.source ?? '').toLowerCase()
+  const platform = (input.platform ?? '').toLowerCase()
+  const ref = (input.referer ?? '').toLowerCase()
+
+  if (explicit === 'google') return 'google'
+  if (platform === 'google') return 'google'
+  if (ref.includes('/review-removal/google')) return 'google'
+  if (ref.includes('/quote?p=google')) return 'google'
+  if (ref.includes('/google-review-')) return 'google'
+  if (ref.includes('utm_campaign=general')) return 'general'
+
+  return explicit || 'general'
+}
+
+export async function notifyLead(
+  input: LeadNotificationInput,
+  opts?: { raw?: Record<string, unknown>; context?: LeadNotificationContext }
+) {
   const webhookUrl = getEnv('LEADCONNECTOR_WEBHOOK_URL')
 
   const uuid = input.uuid ?? crypto.randomUUID()
+
+  const source = normalizeSource({
+    source: input.source,
+    platform: opts?.context?.platform,
+    referer: opts?.context?.referer,
+  })
+
   const lead: LeadNotificationInput = {
     uuid,
     name: input.name ?? '',
@@ -32,9 +75,30 @@ export async function notifyLead(input: LeadNotificationInput) {
     business: input.business ?? '',
     business_url: input.business_url ?? '',
     city: input.city ?? '',
-    source: input.source ?? '',
+    source,
     phone: input.phone ?? '',
     Country: input.Country ?? (getEnv('LEAD_DEFAULT_COUNTRY') || 'USA'),
+    reviewType: input.reviewType ?? '',
+    reviewsToRemove: input.reviewsToRemove ?? '',
+    postedTimeframe: input.postedTimeframe ?? '',
+    utm_source: input.utm_source ?? '',
+    utm_medium: input.utm_medium ?? '',
+    utm_campaign: input.utm_campaign ?? '',
+    utm_term: input.utm_term ?? '',
+    utm_content: input.utm_content ?? '',
+    gclid: input.gclid ?? '',
+    wbraid: input.wbraid ?? '',
+    gbraid: input.gbraid ?? '',
+    fbclid: input.fbclid ?? '',
+    msclkid: input.msclkid ?? '',
+  }
+
+  const raw = opts?.raw ?? {}
+  const webhookBody = {
+    ...raw,
+    ...lead,
+    referer: opts?.context?.referer ?? '',
+    platform: opts?.context?.platform ?? '',
   }
 
   const tasks: Array<Promise<unknown>> = []
@@ -44,7 +108,7 @@ export async function notifyLead(input: LeadNotificationInput) {
       fetch(webhookUrl, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(lead),
+        body: JSON.stringify(webhookBody),
       })
     )
   } else {
@@ -106,9 +170,19 @@ function formatLeadSms(lead: LeadNotificationInput) {
   const country = lead.Country ?? ''
   const source = lead.source ?? ''
   const uuid = lead.uuid ?? ''
+  const reviewType = lead.reviewType ?? ''
+  const reviewsToRemove = lead.reviewsToRemove ?? ''
+  const postedTimeframe = lead.postedTimeframe ?? ''
+  const utmCampaign = lead.utm_campaign ?? ''
+  const gclid = lead.gclid ?? ''
 
   const websiteLine = website ? `\n🌐 Website: ${website}` : ''
   const emailLine = email ? `\n📧 Email: ${email}` : ''
+  const reviewTypeLine = reviewType ? `\n📝 Review Type: ${reviewType}` : ''
+  const countLine = reviewsToRemove ? `\n🔢 Reviews To Remove: ${reviewsToRemove}` : ''
+  const timeframeLine = postedTimeframe ? `\n⏱ Timeframe: ${postedTimeframe}` : ''
+  const utmLine = utmCampaign ? `\n🏷 Campaign: ${utmCampaign}` : ''
+  const gclidLine = gclid ? `\n🧷 GCLID: ${gclid}` : ''
 
   return (
     `⭐️⭐️⭐️ NEW REVIEW REMOVAL LEAD! ⭐️⭐️⭐️` +
@@ -120,6 +194,11 @@ function formatLeadSms(lead: LeadNotificationInput) {
     `\n🏙 City: ${city}` +
     `\n🌎 Country: ${country}` +
     `\n🔎 Source: ${source}` +
+    reviewTypeLine +
+    countLine +
+    timeframeLine +
+    utmLine +
+    gclidLine +
     `\n🆔 Lead ID: ${uuid}` +
     `\n\n🔥 Follow up immediately!`
   )
@@ -147,5 +226,18 @@ export function leadFromFormData(formData: FormData) {
     source,
     phone: get('phone'),
     Country: get('Country') || get('country'),
+    reviewType: get('reviewType'),
+    reviewsToRemove: get('reviewsToRemove'),
+    postedTimeframe: get('postedTimeframe'),
+    utm_source: get('utm_source'),
+    utm_medium: get('utm_medium'),
+    utm_campaign: get('utm_campaign'),
+    utm_term: get('utm_term'),
+    utm_content: get('utm_content'),
+    gclid: get('gclid'),
+    wbraid: get('wbraid'),
+    gbraid: get('gbraid'),
+    fbclid: get('fbclid'),
+    msclkid: get('msclkid'),
   } satisfies LeadNotificationInput
 }

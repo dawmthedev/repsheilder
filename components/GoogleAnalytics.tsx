@@ -41,3 +41,12 @@ export function trackEvent(name: string, params?: Record<string, unknown>) {
   }
   window.gtag('event', name, params ?? {})
 }
+
+export function trackGoogleAdsConversion() {
+  if (typeof window === 'undefined') return
+  if (!window.gtag) return
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('[Google Ads Conversion]', { send_to: 'AW-16915751123/EHm6CNzCy4EcENPBh4I_' })
+  }
+  window.gtag('event', 'conversion', { send_to: 'AW-16915751123/EHm6CNzCy4EcENPBh4I_' })
+}

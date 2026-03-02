@@ -31,7 +31,7 @@ export default function ReviewRemovalHubPage() {
 
           <div className="mt-6 flex justify-center">
             <Link
-              href="/quote"
+              href="/quote#quote-form"
               className="h-11 w-full max-w-xs rounded-full bg-brand-600 px-6 text-center text-sm font-semibold leading-[44px] text-white shadow-sm hover:bg-brand-700"
             >
               Start free case evaluation

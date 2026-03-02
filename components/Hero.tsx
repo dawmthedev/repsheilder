@@ -35,7 +35,7 @@ export function Hero() {
 
             <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
               <Link
-                href="/quote?p=google"
+                href="/quote#quote-form"
                 className="rounded-full bg-brand-600 px-7 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-700"
               >
                 Free Case Evaluation

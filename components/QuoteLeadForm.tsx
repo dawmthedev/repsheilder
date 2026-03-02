@@ -24,6 +24,8 @@ export function QuoteLeadForm({
   const initialPlatformValue = readParam(searchParams, 'p')
   const platform: Platform = isPlatform(initialPlatformValue) ? initialPlatformValue : defaultPlatform
 
+  const funnel = initialPlatformValue ? 'platform' : 'general'
+
   const campaignTag = readParam(searchParams, 'campaignTag') || readParam(searchParams, 'utm_campaign')
 
   const trackingKeys = [
@@ -44,6 +46,8 @@ export function QuoteLeadForm({
       <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
         <div className="text-sm font-semibold text-slate-900">{title}</div>
         <div className="mt-1 text-sm text-slate-600">{description}</div>
+
+        <input type="hidden" name="funnel" value={funnel} />
 
         {campaignTag ? <input type="hidden" name="campaignTag" value={campaignTag} /> : null}
 
