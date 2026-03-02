@@ -22,7 +22,7 @@ export async function submitQuoteLead(payload: Record<string, unknown>) {
 
     const platform = typeof payload['platform'] === 'string' ? payload['platform'] : ''
 
-    await notifyLead({
+    const notifyResult = await notifyLead({
       name,
       email: typeof payload['email'] === 'string' ? payload['email'] : '',
       business: typeof payload['companyName'] === 'string' ? payload['companyName'] : '',
@@ -51,6 +51,8 @@ export async function submitQuoteLead(payload: Record<string, unknown>) {
         platform,
       },
     })
+
+    return { ok: true, leadId: notifyResult.uuid }
   } catch (err) {
     console.warn('Lead notify failed (quote lead)', err)
   }

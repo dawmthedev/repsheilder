@@ -48,9 +48,11 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
     redirect(`/quote?p=${platform}&error=1`)
   }
 
+  const leadIdParam = result && typeof (result as any).leadId !== 'undefined' ? `&leadId=${encodeURIComponent(String((result as any).leadId))}` : ''
+
   if (funnel === 'general') {
-    redirect(`/thank-you?submitted=1`)
+    redirect(`/thank-you?submitted=1${leadIdParam}`)
   }
 
-  redirect(`/review-removal/${platform}?submitted=1`)
+  redirect(`/review-removal/${platform}?submitted=1${leadIdParam}`)
 }

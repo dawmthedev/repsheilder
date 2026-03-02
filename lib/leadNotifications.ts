@@ -9,6 +9,10 @@ function toStringValue(v: unknown) {
   return typeof v === 'string' ? v : ''
 }
 
+function isProd() {
+  return process.env.NODE_ENV === 'production'
+}
+
 export type LeadNotificationInput = {
   uuid?: string | number
   name?: string
@@ -103,14 +107,19 @@ export async function notifyLead(
 
   const tasks: Array<Promise<unknown>> = []
 
+  if (!isProd()) {
+    console.log('[LeadNotify] prepared', {
+      uuid,
+      source: lead.source,
+      email: lead.email,
+      business: lead.business,
+      hasWebhookUrl: Boolean(webhookUrl),
+      hasTwilioEnv: Boolean(getEnv('TWILIO_ACCOUNT_SID') && getEnv('TWILIO_AUTH_TOKEN') && getEnv('TWILIO_TO') && getEnv('TWILIO_FROM')),
+    })
+  }
+
   if (webhookUrl) {
-    tasks.push(
-      fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(webhookBody),
-      })
-    )
+    tasks.push(postWebhook(webhookUrl, webhookBody, uuid))
   } else {
     console.warn('Missing env LEADCONNECTOR_WEBHOOK_URL; skipping webhook')
   }
@@ -122,6 +131,30 @@ export async function notifyLead(
   return { ok: true, uuid }
 }
 
+async function postWebhook(webhookUrl: string, body: Record<string, unknown>, uuid: string | number) {
+  try {
+    const res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+
+    if (!isProd()) {
+      console.log('[LeadNotify] webhook response', { uuid, status: res.status, ok: res.ok })
+    }
+
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      console.warn('[LeadNotify] webhook failed', { uuid, status: res.status, body: text.slice(0, 500) })
+    }
+
+    return { ok: res.ok, status: res.status }
+  } catch (err) {
+    console.warn('[LeadNotify] webhook error', { uuid, err })
+    return { ok: false }
+  }
+}
+
 async function sendLeadSms(lead: LeadNotificationInput) {
   const accountSid = getEnv('TWILIO_ACCOUNT_SID')
   const authToken = getEnv('TWILIO_AUTH_TOKEN')
@@ -129,7 +162,13 @@ async function sendLeadSms(lead: LeadNotificationInput) {
   const from = getEnv('TWILIO_FROM')
 
   if (!accountSid || !authToken || !to || !from) {
-    console.warn('Missing Twilio env vars; skipping SMS')
+    const missing = [
+      !accountSid ? 'TWILIO_ACCOUNT_SID' : '',
+      !authToken ? 'TWILIO_AUTH_TOKEN' : '',
+      !to ? 'TWILIO_TO' : '',
+      !from ? 'TWILIO_FROM' : '',
+    ].filter(Boolean)
+    console.warn('Missing Twilio env vars; skipping SMS', { missing })
     return { ok: false }
   }
 
@@ -151,10 +190,19 @@ async function sendLeadSms(lead: LeadNotificationInput) {
     body,
   })
 
+  if (!isProd()) {
+    console.log('[LeadNotify] twilio response', { uuid: lead.uuid ?? '', status: res.status, ok: res.ok })
+  }
+
   if (!res.ok) {
     const text = await res.text().catch(() => '')
     console.warn('Twilio SMS failed', res.status, text)
     return { ok: false }
+  }
+
+  if (!isProd()) {
+    const json = await res.json().catch(() => null)
+    console.log('[LeadNotify] twilio sent', { uuid: lead.uuid ?? '', sid: json && typeof json === 'object' ? (json as any).sid : '' })
   }
 
   return { ok: true }
