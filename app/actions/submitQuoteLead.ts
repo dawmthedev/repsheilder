@@ -21,6 +21,8 @@ export async function submitQuoteLead(payload: Record<string, unknown>) {
     const name = `${firstName} ${lastName}`.trim()
 
     const platform = typeof payload['platform'] === 'string' ? payload['platform'] : ''
+    const funnel = typeof payload['funnel'] === 'string' ? payload['funnel'] : ''
+    const source = funnel === 'general' ? 'general' : platform
 
     const notifyResult = await notifyLead({
       name,
@@ -28,7 +30,7 @@ export async function submitQuoteLead(payload: Record<string, unknown>) {
       business: typeof payload['companyName'] === 'string' ? payload['companyName'] : '',
       business_url: typeof payload['businessListingLink'] === 'string' ? payload['businessListingLink'] : '',
       city: '',
-      source: platform,
+      source,
       phone: typeof payload['phone'] === 'string' ? payload['phone'] : '',
       Country: '',
       reviewType: typeof payload['reviewType'] === 'string' ? payload['reviewType'] : '',

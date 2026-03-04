@@ -17,9 +17,9 @@ export function GuaranteeCard() {
           </div>
         </div>
         <div className="rounded-2xl border border-emerald-200/70 bg-white p-5">
-          <div className="text-sm font-semibold text-slate-950">60-Day Results Window</div>
+          <div className="text-sm font-semibold text-slate-950">5-Day Results Window</div>
           <div className="mt-2 text-sm leading-6 text-slate-600">
-            If results aren’t achieved in 60 days, we keep working at no additional cost.
+            If results aren’t achieved in 5 days, we keep working at no additional cost.
           </div>
         </div>
         <div className="rounded-2xl border border-emerald-200/70 bg-white p-5">

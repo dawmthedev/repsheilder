@@ -33,9 +33,9 @@ export function GuaranteeSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-slate-950">60-Day Results Window</h3>
+            <h3 className="mt-4 text-lg font-semibold text-slate-950">5-Day Results Window</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              If we don't achieve results within 60 days, we continue working at no additional cost until we do.
+              If we don't achieve results within 5 days, we continue working at no additional cost until we do.
             </p>
           </div>
 

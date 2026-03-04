@@ -48,7 +48,10 @@ function normalizeSource(input: { source?: string; platform?: string; referer?: 
   const platform = (input.platform ?? '').toLowerCase()
   const ref = (input.referer ?? '').toLowerCase()
 
-  if (explicit === 'google') return 'google'
+  // If source is already explicitly set to 'general' or 'google', honor it
+  if (explicit === 'general' || explicit === 'google') return explicit
+
+  // Fallback to platform/referer logic only when source is not explicitly set
   if (platform === 'google') return 'google'
   if (ref.includes('/review-removal/google')) return 'google'
   if (ref.includes('/quote?p=google')) return 'google'
