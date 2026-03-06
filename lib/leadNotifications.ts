@@ -61,6 +61,42 @@ function normalizeSource(input: { source?: string; platform?: string; referer?: 
   return explicit || 'general'
 }
 
+// Simple in-memory deduplication cache (resets on server restart)
+const recentSubmissions = new Map<string, number>()
+const DEDUPE_WINDOW_MS = 5000 // 5 seconds
+
+function getDedupeKey(lead: LeadNotificationInput) {
+  // Create a key based on email + phone + business to detect duplicates
+  const parts = [
+    lead.email?.toLowerCase().trim() || '',
+    lead.phone?.replace(/\D/g, '') || '',
+    lead.business?.toLowerCase().trim() || '',
+  ]
+  return parts.filter(Boolean).join('|')
+}
+
+function isDuplicateSubmission(lead: LeadNotificationInput) {
+  const key = getDedupeKey(lead)
+  const now = Date.now()
+  const lastSubmission = recentSubmissions.get(key)
+  
+  if (lastSubmission && (now - lastSubmission) < DEDUPE_WINDOW_MS) {
+    console.log('[LeadNotify] Duplicate submission detected, skipping', { key, timeSinceLast: now - lastSubmission })
+    return true
+  }
+  
+  recentSubmissions.set(key, now)
+  
+  // Clean up old entries (optional, prevents memory growth)
+  for (const [k, timestamp] of recentSubmissions.entries()) {
+    if (now - timestamp > DEDUPE_WINDOW_MS * 2) {
+      recentSubmissions.delete(k)
+    }
+  }
+  
+  return false
+}
+
 export async function notifyLead(
   input: LeadNotificationInput,
   opts?: { raw?: Record<string, unknown>; context?: LeadNotificationContext }
@@ -98,6 +134,12 @@ export async function notifyLead(
     gbraid: input.gbraid ?? '',
     fbclid: input.fbclid ?? '',
     msclkid: input.msclkid ?? '',
+  }
+
+  // Check for duplicate submissions
+  if (isDuplicateSubmission(lead)) {
+    console.log('[LeadNotify] Skipping duplicate submission', { uuid })
+    return { ok: true, uuid }
   }
 
   const raw = opts?.raw ?? {}

@@ -17,6 +17,7 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
 
   const payload = {
     platform,
+    funnel,
     campaignTag: getString(formData, 'campaignTag'),
     firstName: getString(formData, 'firstName'),
     lastName: getString(formData, 'lastName'),
