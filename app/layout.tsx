@@ -11,7 +11,7 @@ import { GA_MEASUREMENT_ID, GoogleAnalyticsPageView } from '@/components/GoogleA
 
 const inter = Inter({ 
   subsets: ['latin'], 
-  display: 'swap', 
+  display: 'optional', 
   adjustFontFallback: true,
   preload: true
 })
@@ -82,8 +82,6 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#000000" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         <link rel="icon" href="/favicon.png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -96,17 +94,7 @@ export default function RootLayout({
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
-        </Script>
-
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-16915751123"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-ads-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');
 gtag('config', 'AW-16915751123');`}
         </Script>
       </head>

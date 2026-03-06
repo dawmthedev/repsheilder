@@ -14,7 +14,8 @@ export function Hero() {
             alt=""
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 1440px"
+            quality={65}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-slate-950/70" />
