@@ -8,6 +8,7 @@ import { Suspense } from 'react'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { GA_MEASUREMENT_ID, GoogleAnalyticsPageView } from '@/components/GoogleAnalytics'
+import { Hotjar } from '@/components/Hotjar'
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -99,6 +100,7 @@ gtag('config', 'AW-16915751123');`}
         </Script>
       </head>
       <body className={`${inter.className} min-h-screen bg-white antialiased`}>
+        <Hotjar />
         <SiteHeader />
         <main className="flex-1">
           {children}

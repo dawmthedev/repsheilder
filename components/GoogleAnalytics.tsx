@@ -28,6 +28,12 @@ export function GoogleAnalyticsPageView() {
     window.gtag('config', GA_MEASUREMENT_ID, {
       page_path,
     })
+
+    window.gtag('event', 'page_view', {
+      page_path,
+      page_location: window.location.href,
+      page_title: document.title,
+    })
   }, [pathname, searchParams])
 
   return null

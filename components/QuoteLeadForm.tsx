@@ -1,5 +1,6 @@
 import { submitQuoteLeadAndRedirect } from '@/app/actions/submitQuoteLeadAndRedirect'
 import { isPlatform, PLATFORMS, platformLabel, type Platform } from '@/lib/platform'
+import { trackEvent } from '@/components/GoogleAnalytics'
 
 function readParam(searchParams: Record<string, string | string[] | undefined>, key: string) {
   const value = searchParams[key]
@@ -42,7 +43,22 @@ export function QuoteLeadForm({
   ]
 
   return (
-    <form action={submitQuoteLeadAndRedirect} className={className}>
+    <form
+      action={submitQuoteLeadAndRedirect}
+      className={className}
+      onFocusCapture={() => {
+        trackEvent('quote_form_start', {
+          funnel,
+          platform,
+        })
+      }}
+      onSubmitCapture={() => {
+        trackEvent('quote_form_submit', {
+          funnel,
+          platform,
+        })
+      }}
+    >
       <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm">
         <div className="text-sm font-semibold text-slate-900">{title}</div>
         <div className="mt-1 text-sm text-slate-600">{description}</div>
@@ -161,6 +177,8 @@ export function QuoteLeadForm({
               id="phone"
               name="phone"
               autoComplete="tel"
+              inputMode="tel"
+              required
               className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
             />
           </div>
