@@ -15,8 +15,8 @@ export default function HomePage({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Repshielder',
-    url: 'https://www.repshielder.com',
-    logo: 'https://www.repshielder.com/images/logo.png',
+    url: 'https://www.repshielders.com',
+    logo: 'https://www.repshielders.com/images/logo.png',
   }
 
   return (

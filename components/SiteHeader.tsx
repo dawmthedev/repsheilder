@@ -22,16 +22,16 @@ export function SiteHeader() {
             Review Removal
           </Link>
           <Link href="/quote?p=google" className="hover:text-brand-600">
-            Google Business
+            Business Profile
           </Link>
           <Link href="/quote?p=airbnb" className="hover:text-brand-600">
-            Airbnb
+            Short-term rentals
           </Link>
           <Link href="/quote?p=facebook" className="hover:text-brand-600">
-            Facebook
+            Social platforms
           </Link>
           <Link href="/quote?p=trustpilot" className="hover:text-brand-600">
-            Trustpilot
+            Review sites
           </Link>
         </nav>
 

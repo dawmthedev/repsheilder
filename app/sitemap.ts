@@ -3,10 +3,14 @@ import type { MetadataRoute } from 'next'
 import { BLOG_POSTS } from '@/lib/blogPosts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.repshielder.com'
+  const baseUrl = 'https://www.repshielders.com'
 
   const routes = [
     '/',
+    '/about',
+    '/contact',
+    '/privacy',
+    '/terms',
     '/blogs',
     '/review-removal',
     '/free-review-analysis',

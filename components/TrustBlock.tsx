@@ -9,8 +9,7 @@ export function TrustBlock() {
               Enterprise-grade handling from intake to resolution
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              We use structured documentation and policy-first workflows designed to support
-              compliant escalations.
+              We use structured documentation and policy-first workflows designed to support compliant escalations and clear audit trails.
             </p>
           </div>
           <div>
@@ -19,8 +18,7 @@ export function TrustBlock() {
               Built around platform rules and evidence
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              Our approach centers on identifying policy violations and packaging evidence so your
-              case is clear and reviewable.
+              Our approach centers on identifying policy violations and packaging evidence so your case is clear, reviewable, and consistent with platform rules.
             </p>
           </div>
           <div>
@@ -29,8 +27,7 @@ export function TrustBlock() {
               Compliance-forward messaging for ads and organic
             </div>
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              We do not guarantee outcomes or claim we can remove legitimate reviews. We help you
-              pursue policy-based enforcement pathways.
+              We help businesses remove policy-violating reviews through evidence-based disputes. We do not remove legitimate reviews, and we do not guarantee removals.
             </p>
           </div>
         </div>

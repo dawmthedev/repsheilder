@@ -48,22 +48,22 @@ function jsonLdForPost(post: { title: string; description: string; slug: string;
     description: post.description,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
-    mainEntityOfPage: `https://www.repshielder.com/blogs/${post.slug}`,
+    mainEntityOfPage: `https://www.repshielders.com/blogs/${post.slug}`,
     author: {
       '@type': 'Organization',
       name: 'Repshielder',
-      url: 'https://www.repshielder.com',
+      url: 'https://www.repshielders.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Repshielder',
-      url: 'https://www.repshielder.com',
+      url: 'https://www.repshielders.com',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.repshielder.com/images/logo.png',
+        url: 'https://www.repshielders.com/images/logo.png',
       },
     },
-    image: ['https://www.repshielder.com/images/hero.jpg'],
+    image: ['https://www.repshielders.com/images/hero.jpg'],
   }
 }
 

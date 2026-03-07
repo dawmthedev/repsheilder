@@ -151,7 +151,7 @@ export default function ReviewRemovalHubPage() {
                     Average turnaround time
                   </td>
                   <td className="border-b border-emerald-200/60 bg-emerald-100/60 px-4 py-4 text-center font-semibold text-emerald-900">
-                    3 days
+                    Eligibility audit in 24–48h
                   </td>
                   <td className="border-b border-emerald-200/60 px-4 py-4 text-center font-semibold text-slate-600">
                     Weeks–Never
@@ -163,17 +163,17 @@ export default function ReviewRemovalHubPage() {
 
                 <tr>
                   <td className="border-b border-emerald-200/60 px-4 py-4 font-semibold text-slate-900">
-                    Success rate
+                    Evidence pack + policy mapping
                   </td>
                   <td className="border-b border-emerald-200/60 bg-emerald-100/60 px-4 py-4 text-center font-semibold text-emerald-900">
-                    98%
+                    Included
                   </td>
-                  <td className="border-b border-emerald-200/60 px-4 py-4 text-center font-semibold text-slate-600">&lt;20%</td>
-                  <td className="border-b border-emerald-200/60 px-4 py-4 text-center font-semibold text-slate-600">60–80%</td>
+                  <td className="border-b border-emerald-200/60 px-4 py-4 text-center font-semibold text-slate-600">Rarely</td>
+                  <td className="border-b border-emerald-200/60 px-4 py-4 text-center font-semibold text-slate-600">Sometimes</td>
                 </tr>
 
                 <tr>
-                  <td className="px-4 py-4 font-semibold text-slate-900">Money-back guarantee</td>
+                  <td className="px-4 py-4 font-semibold text-slate-900">Continued support window</td>
                   <td className="bg-emerald-100/60 px-4 py-4 text-center">
                     <span className="inline-flex items-center justify-center text-emerald-700">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

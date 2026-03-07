@@ -81,12 +81,12 @@ function jsonLdForService(platform: Platform) {
     provider: {
       '@type': 'Organization',
       name: 'Repshielder',
-      url: 'https://www.repshielder.com',
-      logo: 'https://www.repshielder.com/images/logo.png',
+      url: 'https://www.repshielders.com',
+      logo: 'https://www.repshielders.com/images/logo.png',
     },
     areaServed: 'US',
     serviceType: `${label} review removal`,
-    url: `https://www.repshielder.com/review-removal/${platform}`,
+    url: `https://www.repshielders.com/review-removal/${platform}`,
   }
 }
 
@@ -101,19 +101,19 @@ function jsonLdBreadcrumb(platform: Platform) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://www.repshielder.com/',
+        item: 'https://www.repshielders.com/',
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Review Removal',
-        item: 'https://www.repshielder.com/review-removal',
+        item: 'https://www.repshielders.com/review-removal',
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: label,
-        item: `https://www.repshielder.com/review-removal/${platform}`,
+        item: `https://www.repshielders.com/review-removal/${platform}`,
       },
     ],
   }

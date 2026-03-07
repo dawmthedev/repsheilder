@@ -7,10 +7,10 @@ export function GuaranteeSection() {
             Our Guarantee
           </div>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
-            Results-Driven Reputation Protection
+            Evidence-Based Dispute Support
           </h2>
           <p className="mt-4 text-lg leading-7 text-slate-600">
-            We stand behind our work with industry-leading guarantees that protect your investment and deliver measurable results.
+            We help businesses remove policy-violating reviews through evidence-based disputes. We do not remove legitimate reviews, and we do not guarantee removals.
           </p>
         </div>
 
@@ -21,9 +21,9 @@ export function GuaranteeSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-slate-950">Pay-Only-If-Approved</h3>
+            <h3 className="mt-4 text-lg font-semibold text-slate-950">Eligibility-first workflow</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              No upfront fees for review removal cases. You only pay when we successfully get your case approved for removal.
+              We start with a policy-violation eligibility audit so you know whether a dispute pathway is viable before investing further.
             </p>
           </div>
 
@@ -33,9 +33,9 @@ export function GuaranteeSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-slate-950">5-Day Results Window</h3>
+            <h3 className="mt-4 text-lg font-semibold text-slate-950">Continued support (30–90 days)</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              If we don't achieve results within 5 days, we continue working at no additional cost until we do.
+              If eligible, we provide continued follow-up and escalation support for 30/60/90 days (package-based) at no extra fee.
             </p>
           </div>
 
@@ -47,7 +47,7 @@ export function GuaranteeSection() {
             </div>
             <h3 className="mt-4 text-lg font-semibold text-slate-950">Transparent Reporting</h3>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Detailed documentation of all actions taken, platform responses, and case progress throughout the entire process.
+              Clear documentation of actions taken, evidence used, and platform responses throughout the process.
             </p>
           </div>
         </div>
@@ -55,44 +55,13 @@ export function GuaranteeSection() {
         <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <div className="grid gap-8 md:grid-cols-2 md:gap-12">
             <div>
-              <h3 className="text-xl font-semibold text-slate-950">Platform-Specific Success Rates</h3>
-              <div className="mt-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-slate-700">Trustpilot</span>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-24 rounded-full bg-slate-200">
-                      <div className="h-2 w-14 rounded-full bg-brand-600" style={{ width: '60%' }}></div>
-                    </div>
-                    <span className="text-sm font-semibold text-slate-950">60%</span>
-                  </div>
+              <h3 className="text-xl font-semibold text-slate-950">What we do (and don’t) do</h3>
+              <div className="mt-6 space-y-3 text-sm leading-6 text-slate-600">
+                <div>
+                  We help businesses remove policy-violating reviews through evidence-based disputes.
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-slate-700">Google Business</span>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-24 rounded-full bg-slate-200">
-                      <div className="h-2 w-12 rounded-full bg-brand-600" style={{ width: '45%' }}></div>
-                    </div>
-                    <span className="text-sm font-semibold text-slate-950">45%</span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-slate-700">Facebook</span>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-24 rounded-full bg-slate-200">
-                      <div className="h-2 w-10 rounded-full bg-brand-600" style={{ width: '40%' }}></div>
-                    </div>
-                    <span className="text-sm font-semibold text-slate-950">40%</span>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-slate-700">Airbnb</span>
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-24 rounded-full bg-slate-200">
-                      <div className="h-2 w-8 rounded-full bg-brand-600" style={{ width: '35%' }}></div>
-                    </div>
-                    <span className="text-sm font-semibold text-slate-950">35%</span>
-                  </div>
-                </div>
+                <div>We do not remove legitimate reviews.</div>
+                <div>We do not guarantee removals.</div>
               </div>
             </div>
             <div>
@@ -102,25 +71,25 @@ export function GuaranteeSection() {
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span>Policy-violating reviews (fake, spam, malicious)</span>
+                  <span>Policy-violating reviews (fake, spam, harassment)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span>Reviews from competitors or former employees</span>
+                  <span>Conflict-of-interest reviews (competitors, former employees)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span>Reviews containing false information</span>
+                  <span>Impersonation, irrelevant content, or spam signals (when supported by evidence)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  <span>Reviews that violate platform terms of service</span>
+                  <span>Clear policy violations supported by a documented evidence pack</span>
                 </li>
               </ul>
             </div>
