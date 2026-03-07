@@ -16,8 +16,9 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
   const platform: Platform = isPlatform(platformValue) ? platformValue : 'google'
 
   const phone = getString(formData, 'phone').trim()
+  const businessListingLink = getString(formData, 'businessListingLink').trim()
 
-  if (!phone) {
+  if (!phone || !businessListingLink) {
     if (funnel === 'general') {
       redirect(`/quote?error=1`)
     }
@@ -32,8 +33,8 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
     lastName: getString(formData, 'lastName'),
     email: getString(formData, 'email'),
     phone,
+    businessListingLink,
     companyName: getString(formData, 'companyName'),
-    businessListingLink: getString(formData, 'businessListingLink'),
     reviewType: getString(formData, 'reviewType'),
     reviewsToRemove: getString(formData, 'reviewsToRemove'),
     postedTimeframe: getString(formData, 'postedTimeframe'),

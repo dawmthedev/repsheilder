@@ -109,6 +109,7 @@ export function QuoteLeadForm({
               placeholder="https://"
               inputMode="url"
               autoComplete="url"
+              required
               className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
             />
             <div className="text-xs leading-5 text-slate-500">
