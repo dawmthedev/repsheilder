@@ -73,6 +73,20 @@ export function IntakeForm({ platform }: { platform: Platform }) {
       </div>
 
       <div className="grid gap-2">
+        <label className="text-sm font-semibold text-slate-900" htmlFor="phone">
+          Phone Number
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          autoComplete="tel"
+          inputMode="tel"
+          required
+          className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
+        />
+      </div>
+
+      <div className="grid gap-2">
         <label className="text-sm font-semibold text-slate-900" htmlFor="businessName">
           Business Name
         </label>
@@ -93,8 +107,111 @@ export function IntakeForm({ platform }: { platform: Platform }) {
           name="reviewUrl"
           required
           placeholder="https://"
+          inputMode="url"
+          autoComplete="url"
           className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
         />
+      </div>
+
+      <div className="grid gap-2">
+        <label className="text-sm font-semibold text-slate-900" htmlFor="reviewType">
+          Review Type
+        </label>
+        <div className="relative">
+          <select
+            id="reviewType"
+            name="reviewType"
+            defaultValue=""
+            required
+            className="h-12 w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pr-12 text-sm font-semibold text-slate-900 shadow-sm outline-none ring-brand-600 transition focus:ring-2 focus:ring-offset-1"
+          >
+            <option value="" disabled>
+              Select review type
+            </option>
+            <option value="text">Text-only reviews</option>
+            <option value="image">Reviews with images</option>
+            <option value="video">Reviews with videos</option>
+            <option value="mixed">Mixed / not sure</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M5.5 7.5L10 12L14.5 7.5"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-2">
+        <label className="text-sm font-semibold text-slate-900" htmlFor="reviewsToRemove">
+          Number of Reviews to Remove
+        </label>
+        <input
+          id="reviewsToRemove"
+          name="reviewsToRemove"
+          type="number"
+          min={1}
+          step={1}
+          placeholder="1"
+          inputMode="numeric"
+          required
+          className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
+        />
+      </div>
+
+      <div className="grid gap-2">
+        <label className="text-sm font-semibold text-slate-900" htmlFor="postedTimeframe">
+          How long ago were these reviews posted?
+        </label>
+        <div className="relative">
+          <select
+            id="postedTimeframe"
+            name="postedTimeframe"
+            defaultValue=""
+            required
+            className="h-12 w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pr-12 text-sm font-semibold text-slate-900 shadow-sm outline-none ring-brand-600 transition focus:ring-2 focus:ring-offset-1"
+          >
+            <option value="" disabled>
+              Select a timeframe
+            </option>
+            <option value="0-7d">0–7 days</option>
+            <option value="8-30d">8–30 days</option>
+            <option value="1-3m">1–3 months</option>
+            <option value="3-12m">3–12 months</option>
+            <option value="1y+">1+ year</option>
+            <option value="not-sure">Not sure</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M5.5 7.5L10 12L14.5 7.5"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <div className="grid gap-2">

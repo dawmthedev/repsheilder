@@ -15,10 +15,31 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
   const platformValue = getString(formData, 'platform')
   const platform: Platform = isPlatform(platformValue) ? platformValue : 'google'
 
+  const firstName = getString(formData, 'firstName').trim()
+  const lastName = getString(formData, 'lastName').trim()
+  const email = getString(formData, 'email').trim()
+
   const phone = getString(formData, 'phone').trim()
   const businessListingLink = getString(formData, 'businessListingLink').trim()
 
-  if (!phone || !businessListingLink) {
+  const companyName = getString(formData, 'companyName').trim()
+  const reviewType = getString(formData, 'reviewType').trim()
+  const reviewsToRemove = getString(formData, 'reviewsToRemove').trim()
+  const postedTimeframe = getString(formData, 'postedTimeframe').trim()
+  const pricingAcknowledgement = getString(formData, 'pricingAcknowledgement').trim()
+
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !phone ||
+    !businessListingLink ||
+    !companyName ||
+    !reviewType ||
+    !reviewsToRemove ||
+    !postedTimeframe ||
+    !pricingAcknowledgement
+  ) {
     if (funnel === 'general') {
       redirect(`/quote?error=1`)
     }
@@ -29,16 +50,16 @@ export async function submitQuoteLeadAndRedirect(formData: FormData) {
     platform,
     funnel,
     campaignTag: getString(formData, 'campaignTag'),
-    firstName: getString(formData, 'firstName'),
-    lastName: getString(formData, 'lastName'),
-    email: getString(formData, 'email'),
+    firstName,
+    lastName,
+    email,
     phone,
     businessListingLink,
-    companyName: getString(formData, 'companyName'),
-    reviewType: getString(formData, 'reviewType'),
-    reviewsToRemove: getString(formData, 'reviewsToRemove'),
-    postedTimeframe: getString(formData, 'postedTimeframe'),
-    pricingAcknowledgement: getString(formData, 'pricingAcknowledgement'),
+    companyName,
+    reviewType,
+    reviewsToRemove,
+    postedTimeframe,
+    pricingAcknowledgement,
     utm_source: getString(formData, 'utm_source'),
     utm_medium: getString(formData, 'utm_medium'),
     utm_campaign: getString(formData, 'utm_campaign'),

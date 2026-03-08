@@ -179,6 +179,7 @@ export function QuoteLeadForm({
               id="companyName"
               name="companyName"
               autoComplete="organization"
+              required
               className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
             />
           </div>
@@ -192,6 +193,7 @@ export function QuoteLeadForm({
                 id="reviewType"
                 name="reviewType"
                 defaultValue=""
+                required
                 className="h-12 w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pr-12 text-sm font-semibold text-slate-900 shadow-sm outline-none ring-brand-600 transition focus:ring-2 focus:ring-offset-1"
               >
                 <option value="" disabled>
@@ -235,6 +237,7 @@ export function QuoteLeadForm({
               step={1}
               placeholder="1"
               inputMode="numeric"
+              required
               className="h-11 w-full rounded-xl border border-black/10 bg-white px-4 text-sm outline-none ring-brand-600 focus:ring-2"
             />
           </div>
@@ -248,6 +251,7 @@ export function QuoteLeadForm({
                 id="postedTimeframe"
                 name="postedTimeframe"
                 defaultValue=""
+                required
                 className="h-12 w-full appearance-none rounded-xl border border-black/10 bg-white px-4 pr-12 text-sm font-semibold text-slate-900 shadow-sm outline-none ring-brand-600 transition focus:ring-2 focus:ring-offset-1"
               >
                 <option value="" disabled>
@@ -286,6 +290,7 @@ export function QuoteLeadForm({
               type="checkbox"
               name="pricingAcknowledgement"
               value="1"
+              required
               className="mt-1 h-4 w-4 rounded border-black/20 text-brand-600 focus:ring-brand-600"
             />
             <span>
